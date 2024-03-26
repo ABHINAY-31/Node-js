@@ -1,4 +1,5 @@
 const fs = require('fs');
+const mongoose = require('mongoose');
 const products = JSON.parse(fs.readFileSync('data.json', 'utf-8'));
 
 exports.createProduct = (req, res) => {

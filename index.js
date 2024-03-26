@@ -1,19 +1,32 @@
 // ------------------------------------------ Express -------------------------------------------
 const express = require('express');
-const fs = require('fs');
+const mongoose = require('mongoose');
+
+
+// mongoose.connect('mongodb+srv://<userData>:<@Abhinay!6789>@cluster0.64p6kro.mongodb.net/learn')
+connection();
+async function connection(){
+    try{
+        await mongoose.connect('mongodb+srv://abhinay:1234@cluster0.64p6kro.mongodb.net/learn')
+        console.log("connected")
+    }
+    catch(err){
+        console.log("errror")
+    }
+}
+const productRouter = express.Router();
 const server = express();
 server.use(express.json()); //body parser ()
-
 const productController = require('./controller/products.js');
 
-server.post('/products', productController.createProduct);
-server.get('/products', productController.getAllData);
-server.get('/products/:id', productController.getData);
-// update
+server.use('/api', productRouter);
+productRouter.post('/products', productController.createProduct);
+productRouter.get('/products', productController.getAllData);
+productRouter.get('/products/:id', productController.getData);
 // put: override  && patch : modifues the value (rest are same)
-server.put('/products/:id', productController.changeData)
-server.delete('/products/:id', productController.deleteData)
-
+productRouter.put('/products/:id', productController.changeData)
+productRouter.delete('/products/:id', productController.deleteData)
+// also put routes in the separate file
 
 
 //Products
