@@ -1,3 +1,0 @@
-ReferenceError: require is not defined in ES module scope, you can use import instead
-This file is being treated as an ES module because it has a '.js' file extension and 'c:\Users\HP\OneDrive\Desktop\Node js\package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
-    at file:///c:/Users/HP/OneDrive/Desktop/Node%20js/index.js:3:12
